@@ -5,7 +5,7 @@ provider "azurerm" {
 
 data "azurerm_subscription" "current" {}
 
-module "frontdoor" {
+module "dashboard" {
   // source  = "kumarvna/dashboard/azurerm"
   // version = "1.0.0"
   source = "../../"
