@@ -3,6 +3,8 @@ provider "azurerm" {
   features {}
 }
 
+data "azurerm_subscription" "current" {}
+
 module "frontdoor" {
   // source  = "kumarvna/dashboard/azurerm"
   // version = "1.0.0"
@@ -14,7 +16,15 @@ module "frontdoor" {
   resource_group_name = "rg-shared-westeurope-01"
   location            = "westeurope"
 
-
+  dashboards = [
+    {
+      name           = "my-cool-dashboard"
+      json_file_path = "./test_dashboard.json"
+      variables = {
+        "title" = "example-dashboard"
+      }
+    }
+  ]
 
   # Adding TAG's to your Azure resources 
   tags = {

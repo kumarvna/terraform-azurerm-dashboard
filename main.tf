@@ -21,4 +21,14 @@ resource "azurerm_resource_group" "rg" {
   tags     = merge({ "ResourceName" = format("%s", var.resource_group_name) }, var.tags, )
 }
 
-
+#---------------------------------------------------------
+# Dashboard Resouce creation - Default is "true"
+#----------------------------------------------------------
+resource "azurerm_dashboard" "main" {
+  for_each             = { for k in var.dashboards : k.name => k }
+  name                 = format("%s", each.key)
+  resource_group_name  = local.resource_group_name
+  location             = local.location
+  dashboard_properties = templatefile(each.value.json_file_path, each.value.variables)
+  tags                 = merge({ "ResourceName" = format("%s", each.key) }, var.tags, )
+}
