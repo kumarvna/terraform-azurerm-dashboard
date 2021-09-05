@@ -3,12 +3,9 @@ provider "azurerm" {
   features {}
 }
 
-data "azurerm_subscription" "current" {}
-
 module "dashboard" {
-  // source  = "kumarvna/dashboard/azurerm"
-  // version = "1.0.0"
-  source = "../../"
+  source  = "kumarvna/dashboard/azurerm"
+  version = "1.0.0"
 
   # By default, this module will not create a resource group. Location will be same as existing RG.
   # proivde a name to use an existing resource group, specify the existing resource group name, 
@@ -16,6 +13,7 @@ module "dashboard" {
   resource_group_name = "rg-shared-westeurope-01"
   location            = "westeurope"
 
+  # Dashboard configuration
   dashboards = [
     {
       name           = "my-cool-dashboard"
