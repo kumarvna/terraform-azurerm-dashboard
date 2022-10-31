@@ -14,7 +14,7 @@ provider "azurerm" {
 
 module "dashboard" {
   source  = "kumarvna/dashboard/azurerm"
-  version = "1.0.0"
+  version = "1.1.0"
 
   # By default, this module will not create a resource group. Location will be same as existing RG.
   # proivde a name to use an existing resource group, specify the existing resource group name, 
@@ -68,14 +68,14 @@ An effective naming convention assembles resource names by using important resou
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.13 |
-| azurerm | >= 2.59.0 |
+| terraform | >= 1.1.9 |
+| azurerm | >= 3.28.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| azurerm | >= 2.59.0 |
+| azurerm | >= 3.28.0 |
 
 ## Inputs
 
