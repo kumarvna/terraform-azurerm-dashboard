@@ -24,7 +24,7 @@ resource "azurerm_resource_group" "rg" {
 #---------------------------------------------------------
 # Dashboard Resouce creation - Default is "true"
 #----------------------------------------------------------
-resource "azurerm_dashboard" "main" {
+resource "azurerm_portal_dashboard" "main" {
   for_each             = { for k in var.dashboards : k.name => k }
   name                 = format("%s", each.key)
   resource_group_name  = local.resource_group_name
